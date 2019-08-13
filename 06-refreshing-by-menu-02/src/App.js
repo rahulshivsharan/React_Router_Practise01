@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import DefaultView from "./DefaultView";
 import Region from "./Region";
 import Continent from "./Continent";
-import SearchCountry from "./SearchCountry";
+import SearchCountryPanel from "./SearchCountryPanel";
 import {BrowserRouter,Route,Link} from "react-router-dom";
 
 export default class App extends React.Component{			   				
@@ -36,7 +36,7 @@ export default class App extends React.Component{
 								<Route exact path="/WorldInfo" component={DefaultView} />
 								<Route exact path="/WorldInfo/regions" component={Region} />
 								<Route exact path="/WorldInfo/continents" component={Continent} />										
-								<Route exact path="/WorldInfo/searchcountry" component={SearchCountry} />
+								<Route exact path="/WorldInfo/searchcountry" component={SearchCountryPanel} />
 							</div>
 						</div>
 					</div>

@@ -3,11 +3,13 @@ import ReactDOM from "react-dom";
 import jQuery from "jQuery";
 
 export default class CountryInfo extends React.Component{
-	constructor(props){
+	constructor(props){		
 		super(props);
-		this.state = {
+		var me = this;
+		me.state = {
 			"countryReqObj" : null,
-			"countryCode" : ""
+			"countryCode" : me.props.match.params.countryCode,
+			"isLoading" : true
 		}
 		this.getCountryInfo = this.getCountryInfo.bind(this);
 	}
@@ -29,7 +31,7 @@ export default class CountryInfo extends React.Component{
 		
 		url += "?date"+ date.getTime();
 			
-					
+		console.log("Loading counter Info ",date.getTime());			
 		me.setState({
 			"countryReqObj" : null,						
 			"isLoading" : true
@@ -55,35 +57,37 @@ export default class CountryInfo extends React.Component{
 		}else{
 			return(
 				<table className="table">
-					<tr>
-						<td align="right">Name</td>
-						<td>{this.state.countryReqObj["name"]}</td>
-					</tr>
-					<tr>
-						<td align="right">Capital</td>
-						<td>{this.state.countryReqObj["capital"]}</td>
-					</tr>
-					<tr>
-						<td align="right">Region</td>
-						<td>{this.state.countryReqObj["region"]}</td>
-					</tr>
-					<tr>
-						<td align="right">Sub-Region</td>
-						<td>{this.state.countryReqObj["subregion"]}</td>
-					</tr>
-					<tr>
-						<td align="right">Population</td>
-						<td>{this.state.countryReqObj["population"]}</td>
-					</tr>
-					<tr>
-						<td align="right">Native-Name</td>
-						<td>{this.state.countryReqObj["nativeName"]}</td>
-					</tr>
-					<tr>
-						<td colspan="2">
-							<img src={this.state.countryReqObj["flag"]} alt={this.state.countryReqObj["name"]} />
-						</td>						
-					</tr>
+					<tbody>
+						<tr>
+							<td align="right">Name</td>
+							<td><b>{this.state.countryReqObj["name"]}</b></td>
+						</tr>
+						<tr>
+							<td align="right">Capital</td>
+							<td><b>{this.state.countryReqObj["capital"]}</b></td>
+						</tr>
+						<tr>
+							<td align="right">Region</td>
+							<td><b>{this.state.countryReqObj["region"]}</b></td>
+						</tr>
+						<tr>
+							<td align="right">Sub-Region</td>
+							<td><b>{this.state.countryReqObj["subregion"]}</b></td>
+						</tr>
+						<tr>
+							<td align="right">Population</td>
+							<td><b>{this.state.countryReqObj["population"]}</b></td>
+						</tr>
+						<tr>
+							<td align="right">Native-Name</td>
+							<td><b>{this.state.countryReqObj["nativeName"]}</b></td>
+						</tr>
+						<tr>
+							<td colSpan="2" align="center">
+								<img src={this.state.countryReqObj["flag"]} alt={this.state.countryReqObj["name"]} />
+							</td>						
+						</tr>
+					</tbody>
 				</table>
 			);	
 		}
